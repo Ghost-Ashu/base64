@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Base64 Encryption/Decryption</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      
+      h1 {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        animation: fade-in 1s;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      
+      textarea {
+        width: 100%;
+        height: 100px;
+        resize: none;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid #ccc;
+        font-size: 16px;
+        font-family: inherit;
+        transition: border-color 0.3s ease;
+      }
+      
+      textarea:focus {
+        border-color: #4CAF50;
+      }
+      
+      button {
+        font-size: 16px;
+        padding: 10px;
+        margin-top: 20px;
+        margin-right: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      
+      button:hover {
+        background-color: #3e8e41;
+      }
+      
+      #result-container {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        animation: slide-up 1s;
+      }
+      
+      #result-container label {
+        font-weight: normal;
+      }
+      
+      #result-container textarea {
+        font-size: 18px;
+        font-weight: bold;
+        background-color: #f2f2f2;
+        border: none;
+        box-shadow: none;
+      }
+      
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes slide-up {
+        from { transform: translateY(100px); opacity: 0; }
+        to { transform: translateY(0px); opacity: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Base64 Encryption/Decryption</h1>
+    <div>
+      <label for="plaintext">Enter Plain Text:</label>
+      <textarea id="plaintext" placeholder="Type your message here..."></textarea>
+    </div>
+    <div>
+      <button id="encrypt-btn">Encrypt</button>
+      <button id="decrypt-btn">Decrypt</button>
+    </div>
+    <div id="result-container">
+      <label for="ciphertext">Result:</label>
+      <textarea id="ciphertext" readonly></textarea>
+    </div>
+    <script>
+      function encrypt() {
+        var plaintext = document.getElementById("plaintext").value;
+        var ciphertext = btoa(plaintext);
+        document.getElementById("ciphertext").value = ciphertext;
+      }
+
+function decrypt() {
+        var ciphertext = document.getElementById("ciphertext").value;
+        var plaintext = atob(ciphertext);
+        document.getElementById("plaintext").value = plaintext;
+      }
+
+      document.getElementById("encrypt-btn").addEventListener("click", encrypt);
+      document.getElementById("decrypt-btn").addEventListener("click", decrypt);
+    </script>
+  </body>
+</html>
